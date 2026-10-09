@@ -1,0 +1,4 @@
+../Middlewares/AIfES/basic/base/ailayer/ailayer_leaky_relu.c:38:12:ailayer_leaky_relu	1
+../Middlewares/AIfES/basic/base/ailayer/ailayer_leaky_relu.c:74:6:ailayer_leaky_relu_forward	1
+../Middlewares/AIfES/basic/base/ailayer/ailayer_leaky_relu.c:84:6:ailayer_leaky_relu_backward	1
+../Middlewares/AIfES/basic/base/ailayer/ailayer_leaky_relu.c:98:6:ailayer_leaky_relu_calc_result_shape	1

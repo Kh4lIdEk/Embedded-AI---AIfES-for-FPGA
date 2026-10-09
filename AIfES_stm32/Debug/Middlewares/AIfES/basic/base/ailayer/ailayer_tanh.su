@@ -1,0 +1,4 @@
+../Middlewares/AIfES/basic/base/ailayer/ailayer_tanh.c:40:12:ailayer_tanh	16	static
+../Middlewares/AIfES/basic/base/ailayer/ailayer_tanh.c:77:6:ailayer_tanh_forward	32	static
+../Middlewares/AIfES/basic/base/ailayer/ailayer_tanh.c:88:6:ailayer_tanh_backward	112	dynamic
+../Middlewares/AIfES/basic/base/ailayer/ailayer_tanh.c:113:6:ailayer_tanh_calc_result_shape	16	static

@@ -1,0 +1,9 @@
+../Core/Inc/aifes_f32_fnn.h:51:9:aifes_f32_fnn_create_model	3
+../Core/Inc/aifes_f32_fnn.h:90:6:aifes_f32_fnn_inference	1
+../Core/Src/aifes_app.c:76:13:uart_clear_errors	4
+../Core/Src/aifes_app.c:89:13:uart_send_sync_ack	1
+../Core/Src/aifes_app.c:102:13:uart_send_probabilities	4
+../Core/Src/aifes_app.c:114:12:uart_receive_message	5
+../Core/Src/aifes_app.c:143:9:get_predicted_label	3
+../Core/Src/aifes_app.c:151:6:aifes_app_init	2
+../Core/Src/aifes_app.c:160:6:aifes_app_step	2
