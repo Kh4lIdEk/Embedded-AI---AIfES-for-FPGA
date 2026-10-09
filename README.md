@@ -23,6 +23,8 @@ Script Python (PC)  --UART 115200, ST-LINK VCP-->  STM32 + AIfES  --prédiction-
 | Modèle | 784 → 128 (ReLU) → 64 (ReLU) → 10 (Softmax), float32 |
 | Taille | 109 386 paramètres, soit 437 544 octets en flash |
 | Espace de travail d'inférence | 6 272 octets (buffer statique de 8 Ko, pas de `malloc`) |
+| Flash utilisée | 472,17 Ko sur 2 Mo (23,06 %) |
+| RAM utilisée | 19,33 Ko sur 640 Ko (3,02 %) |
 | Normalisation d'entrée | `(pixel / 255) - 0.5` |
 
 Le premier modèle (784-512-256-128-64-10, 2,3 Mo) dépassait la flash de la carte ; il a été remplacé par le modèle réduit ci-dessus.
@@ -70,12 +72,19 @@ Méthode de diagnostic utile : test de boucle d'émission seule (LED + envoi d'u
 
 ## 7. Validation
 
-- Le firmware (couche applicative + AIfES) a été validé sur PC contre un UART simulé : poignée de main, enchaînement de 100 images avec le script Python non modifié, resynchronisation sans reset.
+- Le firmware (couche applicative + AIfES) a d'abord été validé sur PC contre un UART simulé : poignée de main, enchaînement de 100 images avec le script Python non modifié, resynchronisation sans reset.
 - Les prédictions de la version C ont été comparées à une passe avant numpy des mêmes poids : prédictions identiques.
-- Précision mesurée sur la carte (100 images MNIST) : **à compléter**.
-- Temps d'inférence (`aifes_last_inference_ms`) : **à compléter**.
+- **Résultat sur la carte** : le script évalue 100 images MNIST envoyées par l'UART et obtient une précision de **97 %** (97 images correctement classées sur 100). La normalisation `(pixel / 255) - 0.5` des données de test est donc cohérente avec celle de l'entraînement.
+- **Empreinte mémoire** (Build Analyzer de CubeIDE, `Debug/AIfES.elf`) :
 
-Point d'attention pour la précision : les données du fichier `.npy` doivent être dans l'intervalle [-0.5 ; 0.5] (même normalisation qu'à l'entraînement). Sinon, soustraire 0.5 côté Python.
+| Région | Taille | Utilisé | Libre | Usage |
+|---|---|---|---|---|
+| FLASH | 2 Mo | 472,17 Ko | 1,54 Mo | 23,06 % |
+| RAM | 640 Ko | 19,33 Ko | 620,67 Ko | 3,02 % |
+
+La flash est dominée par les poids (437 544 octets en `.rodata`). La RAM comprend l'espace de travail d'inférence, les buffers d'entrée/sortie et la pile et le tas réservés.
+
+- Temps d'inférence (`aifes_last_inference_ms`) : **à compléter**.
 
 ## 8. Pistes d'amélioration
 
