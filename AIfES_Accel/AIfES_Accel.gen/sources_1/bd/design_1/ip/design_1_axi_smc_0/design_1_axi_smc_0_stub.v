@@ -2,10 +2,10 @@
 // Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
-// Date        : Wed Nov 11 20:08:05 2026
+// Date        : Wed Nov 11 20:08:03 2026
 // Host        : omen running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub
-//               c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/ip/design_1_axi_smc_0/design_1_axi_smc_0_stub.v
+// Command     : write_verilog -force -mode synth_stub -rename_top design_1_axi_smc_0 -prefix
+//               design_1_axi_smc_0_ design_1_axi_smc_0_stub.v
 // Design      : design_1_axi_smc_0
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7z020clg484-1

@@ -4,8 +4,8 @@ INFO: [Common 17-3922] A valid Vivado Design Suite ENTERPRISE license has been d
 # SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
 # IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
 # SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
-# Start of session at: Wed Nov 11 20:08:09 2026
-# Process ID         : 34620
+# Start of session at: Fri Nov 13 13:58:55 2026
+# Process ID         : 46812
 # Current directory  : C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.runs/synth_1
 # Command line       : vivado.exe -log design_1_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_wrapper.tcl
 # Log file           : C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.runs/synth_1/design_1_wrapper.vds
@@ -18,55 +18,59 @@ INFO: [Common 17-3922] A valid Vivado Design Suite ENTERPRISE license has been d
 # CPU Physical cores : 16
 # CPU Logical cores  : 24
 # Host memory        : 31890 MB
-# Swap memory        : 12348 MB
-# Total Virtual      : 44238 MB
-# Available Virtual  : 8966 MB
+# Swap memory        : 12502 MB
+# Total Virtual      : 44393 MB
+# Available Virtual  : 13065 MB
 #-----------------------------------------------------------
 source design_1_wrapper.tcl -notrace
-create_project: Time (s): cpu = 00:00:09 ; elapsed = 00:00:08 . Memory (MB): peak = 583.910 ; gain = 268.934
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/micro/AppData/Roaming/Xilinx/ip_repo'.
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/AMDDesignTools/2026.1/Vivado/data/ip'.
+Command: read_checkpoint -auto_incremental -incremental C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.srcs/utils_1/imports/synth_1/design_1_wrapper.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.srcs/utils_1/imports/synth_1/design_1_wrapper.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
 Command: synth_design -top design_1_wrapper -part xc7z020clg484-1
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
-INFO: [Common 17-86] Your Synthesis license expires in 12 day(s)
+INFO: [Common 17-86] Your Synthesis license expires in 10 day(s)
 INFO: [Device 21-403] Loading part xc7z020clg484-1
 INFO: [Designutils 20-5008] Incremental synthesis strategy default
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 28816
+INFO: [Synth 8-7075] Helper process launched with PID 20868
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1423.836 ; gain = 576.195
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1427.305 ; gain = 576.578
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'design_1_wrapper' [C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/hdl/design_1_wrapper.v:13]
 INFO: [Synth 8-6157] synthesizing module 'design_1' [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/synth/design_1.v:13]
-INFO: [Synth 8-6157] synthesizing module 'design_1_axi_dma_0_0' [C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.runs/synth_1/.Xil/Vivado-34620-omen/realtime/design_1_axi_dma_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_axi_dma_0_0' (0#1) [C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.runs/synth_1/.Xil/Vivado-34620-omen/realtime/design_1_axi_dma_0_0_stub.v:6]
-WARNING: [Synth 8-7071] port 'mm2s_prmry_reset_out_n' of module 'design_1_axi_dma_0_0' is unconnected for instance 'axi_dma_0' [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/synth/design_1.v:186]
-WARNING: [Synth 8-7071] port 'm_axis_mm2s_tkeep' of module 'design_1_axi_dma_0_0' is unconnected for instance 'axi_dma_0' [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/synth/design_1.v:186]
-WARNING: [Synth 8-7071] port 'mm2s_introut' of module 'design_1_axi_dma_0_0' is unconnected for instance 'axi_dma_0' [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/synth/design_1.v:186]
-WARNING: [Synth 8-7071] port 'axi_dma_tstvec' of module 'design_1_axi_dma_0_0' is unconnected for instance 'axi_dma_0' [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/synth/design_1.v:186]
-WARNING: [Synth 8-7023] instance 'axi_dma_0' of module 'design_1_axi_dma_0_0' has 40 connections declared, but only 36 given [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/synth/design_1.v:186]
+INFO: [Synth 8-6157] synthesizing module 'design_1_MAC_Dense_Layer_0_0' [C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.runs/synth_1/.Xil/Vivado-46812-omen/realtime/design_1_MAC_Dense_Layer_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_MAC_Dense_Layer_0_0' (0#1) [C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.runs/synth_1/.Xil/Vivado-46812-omen/realtime/design_1_MAC_Dense_Layer_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'design_1_axi_dma_0_0' [C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.runs/synth_1/.Xil/Vivado-46812-omen/realtime/design_1_axi_dma_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_axi_dma_0_0' (0#1) [C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.runs/synth_1/.Xil/Vivado-46812-omen/realtime/design_1_axi_dma_0_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'mm2s_prmry_reset_out_n' of module 'design_1_axi_dma_0_0' is unconnected for instance 'axi_dma_0' [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/synth/design_1.v:210]
+WARNING: [Synth 8-7071] port 'm_axis_mm2s_tkeep' of module 'design_1_axi_dma_0_0' is unconnected for instance 'axi_dma_0' [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/synth/design_1.v:210]
+WARNING: [Synth 8-7071] port 'mm2s_introut' of module 'design_1_axi_dma_0_0' is unconnected for instance 'axi_dma_0' [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/synth/design_1.v:210]
+WARNING: [Synth 8-7071] port 'axi_dma_tstvec' of module 'design_1_axi_dma_0_0' is unconnected for instance 'axi_dma_0' [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/synth/design_1.v:210]
+WARNING: [Synth 8-7023] instance 'axi_dma_0' of module 'design_1_axi_dma_0_0' has 40 connections declared, but only 36 given [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/synth/design_1.v:210]
 INFO: [Synth 8-6157] synthesizing module 'design_1_axi_mem_intercon_0' [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/synth/design_1.v:463]
 INFO: [Synth 8-6157] synthesizing module 's00_couplers_imp_7HNO1D' [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/synth/design_1.v:601]
-INFO: [Synth 8-6157] synthesizing module 'design_1_axi_mem_intercon_imp_auto_pc_0' [C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.runs/synth_1/.Xil/Vivado-34620-omen/realtime/design_1_axi_mem_intercon_imp_auto_pc_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_axi_mem_intercon_imp_auto_pc_0' (0#1) [C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.runs/synth_1/.Xil/Vivado-34620-omen/realtime/design_1_axi_mem_intercon_imp_auto_pc_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'design_1_axi_mem_intercon_imp_auto_pc_0' [C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.runs/synth_1/.Xil/Vivado-46812-omen/realtime/design_1_axi_mem_intercon_imp_auto_pc_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_axi_mem_intercon_imp_auto_pc_0' (0#1) [C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.runs/synth_1/.Xil/Vivado-46812-omen/realtime/design_1_axi_mem_intercon_imp_auto_pc_0_stub.v:6]
 INFO: [Synth 8-6155] done synthesizing module 's00_couplers_imp_7HNO1D' (0#1) [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/synth/design_1.v:601]
 INFO: [Synth 8-6155] done synthesizing module 'design_1_axi_mem_intercon_0' (0#1) [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/synth/design_1.v:463]
-INFO: [Synth 8-6157] synthesizing module 'design_1_axi_smc_0' [C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.runs/synth_1/.Xil/Vivado-34620-omen/realtime/design_1_axi_smc_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_axi_smc_0' (0#1) [C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.runs/synth_1/.Xil/Vivado-34620-omen/realtime/design_1_axi_smc_0_stub.v:6]
-WARNING: [Synth 8-7071] port 'M00_AXI_awprot' of module 'design_1_axi_smc_0' is unconnected for instance 'axi_smc' [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/synth/design_1.v:258]
-WARNING: [Synth 8-7071] port 'M00_AXI_wstrb' of module 'design_1_axi_smc_0' is unconnected for instance 'axi_smc' [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/synth/design_1.v:258]
-WARNING: [Synth 8-7071] port 'M00_AXI_arprot' of module 'design_1_axi_smc_0' is unconnected for instance 'axi_smc' [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/synth/design_1.v:258]
-WARNING: [Synth 8-7071] port 'M01_AXI_awprot' of module 'design_1_axi_smc_0' is unconnected for instance 'axi_smc' [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/synth/design_1.v:258]
-WARNING: [Synth 8-7071] port 'M01_AXI_arprot' of module 'design_1_axi_smc_0' is unconnected for instance 'axi_smc' [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/synth/design_1.v:258]
-WARNING: [Synth 8-7023] instance 'axi_smc' of module 'design_1_axi_smc_0' has 78 connections declared, but only 73 given [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/synth/design_1.v:258]
-INFO: [Synth 8-6157] synthesizing module 'design_1_dense_mac_axi_0_0' [C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.runs/synth_1/.Xil/Vivado-34620-omen/realtime/design_1_dense_mac_axi_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_dense_mac_axi_0_0' (0#1) [C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.runs/synth_1/.Xil/Vivado-34620-omen/realtime/design_1_dense_mac_axi_0_0_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'design_1_processing_system7_0_0' [C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.runs/synth_1/.Xil/Vivado-34620-omen/realtime/design_1_processing_system7_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_processing_system7_0_0' (0#1) [C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.runs/synth_1/.Xil/Vivado-34620-omen/realtime/design_1_processing_system7_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'design_1_axi_smc_0' [C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.runs/synth_1/.Xil/Vivado-46812-omen/realtime/design_1_axi_smc_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_axi_smc_0' (0#1) [C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.runs/synth_1/.Xil/Vivado-46812-omen/realtime/design_1_axi_smc_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'M00_AXI_awprot' of module 'design_1_axi_smc_0' is unconnected for instance 'axi_smc' [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/synth/design_1.v:282]
+WARNING: [Synth 8-7071] port 'M00_AXI_wstrb' of module 'design_1_axi_smc_0' is unconnected for instance 'axi_smc' [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/synth/design_1.v:282]
+WARNING: [Synth 8-7071] port 'M00_AXI_arprot' of module 'design_1_axi_smc_0' is unconnected for instance 'axi_smc' [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/synth/design_1.v:282]
+WARNING: [Synth 8-7071] port 'M01_AXI_awprot' of module 'design_1_axi_smc_0' is unconnected for instance 'axi_smc' [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/synth/design_1.v:282]
+WARNING: [Synth 8-7071] port 'M01_AXI_arprot' of module 'design_1_axi_smc_0' is unconnected for instance 'axi_smc' [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/synth/design_1.v:282]
+WARNING: [Synth 8-7023] instance 'axi_smc' of module 'design_1_axi_smc_0' has 78 connections declared, but only 73 given [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/synth/design_1.v:282]
+INFO: [Synth 8-6157] synthesizing module 'design_1_processing_system7_0_0' [C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.runs/synth_1/.Xil/Vivado-46812-omen/realtime/design_1_processing_system7_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_processing_system7_0_0' (0#1) [C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.runs/synth_1/.Xil/Vivado-46812-omen/realtime/design_1_processing_system7_0_0_stub.v:6]
 WARNING: [Synth 8-7071] port 'S_AXI_HP0_AWREADY' of module 'design_1_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/synth/design_1.v:356]
 WARNING: [Synth 8-7071] port 'S_AXI_HP0_BVALID' of module 'design_1_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/synth/design_1.v:356]
 WARNING: [Synth 8-7071] port 'S_AXI_HP0_WREADY' of module 'design_1_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/synth/design_1.v:356]
@@ -78,8 +82,8 @@ WARNING: [Synth 8-7071] port 'S_AXI_HP0_WCOUNT' of module 'design_1_processing_s
 WARNING: [Synth 8-7071] port 'S_AXI_HP0_RACOUNT' of module 'design_1_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/synth/design_1.v:356]
 WARNING: [Synth 8-7071] port 'S_AXI_HP0_WACOUNT' of module 'design_1_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/synth/design_1.v:356]
 WARNING: [Synth 8-7023] instance 'processing_system7_0' of module 'design_1_processing_system7_0_0' has 107 connections declared, but only 97 given [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/synth/design_1.v:356]
-INFO: [Synth 8-6157] synthesizing module 'design_1_rst_ps7_0_100M_0' [C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.runs/synth_1/.Xil/Vivado-34620-omen/realtime/design_1_rst_ps7_0_100M_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_rst_ps7_0_100M_0' (0#1) [C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.runs/synth_1/.Xil/Vivado-34620-omen/realtime/design_1_rst_ps7_0_100M_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'design_1_rst_ps7_0_100M_0' [C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.runs/synth_1/.Xil/Vivado-46812-omen/realtime/design_1_rst_ps7_0_100M_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_rst_ps7_0_100M_0' (0#1) [C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.runs/synth_1/.Xil/Vivado-46812-omen/realtime/design_1_rst_ps7_0_100M_0_stub.v:6]
 WARNING: [Synth 8-7071] port 'mb_reset' of module 'design_1_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/synth/design_1.v:454]
 WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'design_1_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/synth/design_1.v:454]
 WARNING: [Synth 8-7071] port 'peripheral_reset' of module 'design_1_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/synth/design_1.v:454]
@@ -92,18 +96,18 @@ WARNING: [Synth 8-7129] Port M_ARESETN in module s00_couplers_imp_7HNO1D is eith
 WARNING: [Synth 8-7129] Port ACLK in module design_1_axi_mem_intercon_0 is either unconnected or has no load
 WARNING: [Synth 8-7129] Port ARESETN in module design_1_axi_mem_intercon_0 is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1552.328 ; gain = 704.688
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1555.207 ; gain = 704.480
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1552.328 ; gain = 704.688
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1555.207 ; gain = 704.480
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1552.328 ; gain = 704.688
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1555.207 ; gain = 704.480
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1552.328 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1555.207 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -112,41 +116,43 @@ Parsing XDC File [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_
 Finished Parsing XDC File [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc] for cell 'design_1_i/processing_system7_0'
 Parsing XDC File [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/ip/design_1_axi_dma_0_0/design_1_axi_dma_0_0/design_1_axi_dma_0_0_in_context.xdc] for cell 'design_1_i/axi_dma_0'
 Finished Parsing XDC File [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/ip/design_1_axi_dma_0_0/design_1_axi_dma_0_0/design_1_axi_dma_0_0_in_context.xdc] for cell 'design_1_i/axi_dma_0'
-Parsing XDC File [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/ip/design_1_dense_mac_axi_0_0/design_1_dense_mac_axi_0_0/design_1_dense_mac_axi_0_0_in_context.xdc] for cell 'design_1_i/dense_mac_axi_0'
-Finished Parsing XDC File [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/ip/design_1_dense_mac_axi_0_0/design_1_dense_mac_axi_0_0/design_1_dense_mac_axi_0_0_in_context.xdc] for cell 'design_1_i/dense_mac_axi_0'
 Parsing XDC File [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/ip/design_1_axi_smc_0/design_1_axi_smc_0/design_1_axi_smc_0_in_context.xdc] for cell 'design_1_i/axi_smc'
 Finished Parsing XDC File [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/ip/design_1_axi_smc_0/design_1_axi_smc_0/design_1_axi_smc_0_in_context.xdc] for cell 'design_1_i/axi_smc'
 Parsing XDC File [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/ip/design_1_rst_ps7_0_100M_0/design_1_rst_ps7_0_100M_0/design_1_rst_ps7_0_100M_0_in_context.xdc] for cell 'design_1_i/rst_ps7_0_100M'
 Finished Parsing XDC File [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/ip/design_1_rst_ps7_0_100M_0/design_1_rst_ps7_0_100M_0/design_1_rst_ps7_0_100M_0_in_context.xdc] for cell 'design_1_i/rst_ps7_0_100M'
 Parsing XDC File [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/ip/design_1_axi_mem_intercon_imp_auto_pc_0/design_1_axi_mem_intercon_imp_auto_pc_0/design_1_axi_mem_intercon_imp_auto_pc_0_in_context.xdc] for cell 'design_1_i/axi_mem_intercon/s00_couplers/auto_pc'
 Finished Parsing XDC File [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/ip/design_1_axi_mem_intercon_imp_auto_pc_0/design_1_axi_mem_intercon_imp_auto_pc_0/design_1_axi_mem_intercon_imp_auto_pc_0_in_context.xdc] for cell 'design_1_i/axi_mem_intercon/s00_couplers/auto_pc'
+Parsing XDC File [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/ip/design_1_MAC_Dense_Layer_0_0/design_1_MAC_Dense_Layer_0_0/design_1_MAC_Dense_Layer_0_0_in_context.xdc] for cell 'design_1_i/MAC_Dense_Layer_0'
+Finished Parsing XDC File [c:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.gen/sources_1/bd/design_1/ip/design_1_MAC_Dense_Layer_0_0/design_1_MAC_Dense_Layer_0_0/design_1_MAC_Dense_Layer_0_0_in_context.xdc] for cell 'design_1_i/MAC_Dense_Layer_0'
 Parsing XDC File [C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.runs/synth_1/dont_touch.xdc]
 Finished Parsing XDC File [C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1552.328 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1555.207 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.023 . Memory (MB): peak = 1552.328 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.022 . Memory (MB): peak = 1555.207 ; gain = 0.000
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 1552.328 ; gain = 704.688
+Finished Constraint Validation : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 1555.207 ; gain = 704.480
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg484-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 1552.328 ; gain = 704.688
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 1555.207 ; gain = 704.480
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1552.328 ; gain = 704.688
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1555.207 ; gain = 704.480
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 1552.328 ; gain = 704.688
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1555.207 ; gain = 704.480
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -172,25 +178,25 @@ WARNING: [Synth 8-7129] Port ARESETN in module design_1_axi_mem_intercon_0 is ei
 WARNING: [Synth 8-7129] Port M00_ACLK in module design_1_axi_mem_intercon_0 is either unconnected or has no load
 WARNING: [Synth 8-7129] Port M00_ARESETN in module design_1_axi_mem_intercon_0 is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 1579.355 ; gain = 731.715
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1593.449 ; gain = 742.723
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 1752.812 ; gain = 905.172
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 1763.480 ; gain = 912.754
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 1753.113 ; gain = 905.473
+Finished Timing Optimization : Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 1763.703 ; gain = 912.977
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 1763.199 ; gain = 915.559
+Finished Technology Mapping : Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 1773.504 ; gain = 922.777
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -208,37 +214,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:33 ; elapsed = 00:00:36 . Memory (MB): peak = 2038.203 ; gain = 1190.562
+Finished IO Insertion : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 2048.707 ; gain = 1197.980
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:33 ; elapsed = 00:00:36 . Memory (MB): peak = 2038.203 ; gain = 1190.562
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 2048.707 ; gain = 1197.980
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:33 ; elapsed = 00:00:36 . Memory (MB): peak = 2038.203 ; gain = 1190.562
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 2048.707 ; gain = 1197.980
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:33 ; elapsed = 00:00:36 . Memory (MB): peak = 2038.203 ; gain = 1190.562
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 2048.707 ; gain = 1197.980
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:33 ; elapsed = 00:00:36 . Memory (MB): peak = 2038.203 ; gain = 1190.562
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 2048.707 ; gain = 1197.980
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:33 ; elapsed = 00:00:36 . Memory (MB): peak = 2038.203 ; gain = 1190.562
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 2048.707 ; gain = 1197.980
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -248,10 +254,10 @@ Report BlackBoxes:
 +------+----------------------------------------+----------+
 |      |BlackBox name                           |Instances |
 +------+----------------------------------------+----------+
-|1     |design_1_axi_dma_0_0                    |         1|
-|2     |design_1_axi_mem_intercon_imp_auto_pc_0 |         1|
-|3     |design_1_axi_smc_0                      |         1|
-|4     |design_1_dense_mac_axi_0_0              |         1|
+|1     |design_1_MAC_Dense_Layer_0_0            |         1|
+|2     |design_1_axi_dma_0_0                    |         1|
+|3     |design_1_axi_mem_intercon_imp_auto_pc_0 |         1|
+|4     |design_1_axi_smc_0                      |         1|
 |5     |design_1_processing_system7_0_0         |         1|
 |6     |design_1_rst_ps7_0_100M_0               |         1|
 +------+----------------------------------------+----------+
@@ -260,32 +266,32 @@ Report Cell Usage:
 +------+--------------------------------------+------+
 |      |Cell                                  |Count |
 +------+--------------------------------------+------+
-|1     |design_1_axi_dma_0                    |     1|
-|2     |design_1_axi_mem_intercon_imp_auto_pc |     1|
-|3     |design_1_axi_smc                      |     1|
-|4     |design_1_dense_mac_axi_0              |     1|
+|1     |design_1_MAC_Dense_Layer_0            |     1|
+|2     |design_1_axi_dma_0                    |     1|
+|3     |design_1_axi_mem_intercon_imp_auto_pc |     1|
+|4     |design_1_axi_smc                      |     1|
 |5     |design_1_processing_system7_0         |     1|
 |6     |design_1_rst_ps7_0_100M               |     1|
 +------+--------------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:33 ; elapsed = 00:00:36 . Memory (MB): peak = 2038.203 ; gain = 1190.562
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 2048.707 ; gain = 1197.980
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 4 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:22 ; elapsed = 00:00:33 . Memory (MB): peak = 2038.203 ; gain = 1190.562
-Synthesis Optimization Complete : Time (s): cpu = 00:00:33 ; elapsed = 00:00:36 . Memory (MB): peak = 2038.203 ; gain = 1190.562
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:20 ; elapsed = 00:00:26 . Memory (MB): peak = 2048.707 ; gain = 1197.980
+Synthesis Optimization Complete : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 2048.707 ; gain = 1197.980
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 2038.203 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 2048.707 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2051.016 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2061.508 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Synth Design complete | Checksum: 15b28d6c
+Synth Design complete | Checksum: 428e5c04
 INFO: [Common 17-83] Releasing license: Synthesis
-37 Infos, 35 Warnings, 0 Critical Warnings and 0 Errors encountered.
+43 Infos, 35 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:39 ; elapsed = 00:00:44 . Memory (MB): peak = 2054.977 ; gain = 1448.500
+synth_design: Time (s): cpu = 00:00:30 ; elapsed = 00:00:35 . Memory (MB): peak = 2065.508 ; gain = 1439.625
 INFO: [Common 17-1381] The checkpoint 'C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES_Accel.runs/synth_1/design_1_wrapper.dcp' has been generated.
 INFO: [Vivado 12-24828] Executing command : report_utilization -file design_1_wrapper_utilization_synth.rpt -pb design_1_wrapper_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Wed Nov 11 20:09:09 2026...
+INFO: [Common 17-206] Exiting Vivado at Fri Nov 13 13:59:39 2026...

@@ -24,7 +24,7 @@ eval( EAInclude(ISEJScriptLib) );
 
 
 ISEStep( "vivado",
-         "-log dense_mac_axi.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source dense_mac_axi.tcl" );
+         "-log MAC_Dense_Layer.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source MAC_Dense_Layer.tcl" );
 
 
 

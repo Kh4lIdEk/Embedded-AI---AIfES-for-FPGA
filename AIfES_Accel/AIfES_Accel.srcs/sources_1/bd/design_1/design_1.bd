@@ -13,14 +13,14 @@
     "design_tree": {
       "processing_system7_0": "",
       "axi_dma_0": "",
-      "dense_mac_axi_0": "",
       "axi_smc": "",
       "rst_ps7_0_100M": "",
       "axi_mem_intercon": {
         "s00_couplers": {
           "auto_pc": ""
         }
-      }
+      },
+      "MAC_Dense_Layer_0": ""
     },
     "interface_ports": {
       "DDR": {
@@ -741,21 +741,6 @@
           }
         }
       },
-      "dense_mac_axi_0": {
-        "vlnv": "xilinx.com:user:dense_mac_axi:1.0",
-        "ip_revision": "2",
-        "xci_name": "design_1_dense_mac_axi_0_0",
-        "xci_path": "ip\\design_1_dense_mac_axi_0_0\\design_1_dense_mac_axi_0_0.xci",
-        "inst_hier_path": "dense_mac_axi_0",
-        "has_run_ip_tcl": "true",
-        "interface_ports": {
-          "s_axi": {
-            "vlnv": "xilinx.com:interface:aximm_rtl:1.0",
-            "mode": "Slave",
-            "memory_map_ref": "s_axi"
-          }
-        }
-      },
       "axi_smc": {
         "vlnv": "xilinx.com:ip:smartconnect:1.0",
         "ip_revision": "29",
@@ -1079,12 +1064,27 @@
             ]
           }
         }
+      },
+      "MAC_Dense_Layer_0": {
+        "vlnv": "xilinx.com:user:MAC_Dense_Layer:1.0",
+        "ip_revision": "2",
+        "xci_name": "design_1_MAC_Dense_Layer_0_0",
+        "xci_path": "ip\\design_1_MAC_Dense_Layer_0_0\\design_1_MAC_Dense_Layer_0_0.xci",
+        "inst_hier_path": "MAC_Dense_Layer_0",
+        "has_run_ip_tcl": "true",
+        "interface_ports": {
+          "s_axi": {
+            "vlnv": "xilinx.com:interface:aximm_rtl:1.0",
+            "mode": "Slave",
+            "memory_map_ref": "s_axi"
+          }
+        }
       }
     },
     "interface_nets": {
       "axi_dma_0_M_AXIS_MM2S": {
         "interface_ports": [
-          "dense_mac_axi_0/s_axis",
+          "MAC_Dense_Layer_0/s_axis",
           "axi_dma_0/M_AXIS_MM2S"
         ]
       },
@@ -1109,7 +1109,7 @@
       "axi_smc_M01_AXI": {
         "interface_ports": [
           "axi_smc/M01_AXI",
-          "dense_mac_axi_0/s_axi"
+          "MAC_Dense_Layer_0/s_axi"
         ]
       },
       "processing_system7_0_DDR": {
@@ -1139,12 +1139,12 @@
           "axi_smc/aclk",
           "axi_dma_0/s_axi_lite_aclk",
           "rst_ps7_0_100M/slowest_sync_clk",
-          "dense_mac_axi_0/aclk",
           "axi_dma_0/m_axi_mm2s_aclk",
           "axi_mem_intercon/S00_ACLK",
           "processing_system7_0/S_AXI_HP0_ACLK",
           "axi_mem_intercon/M00_ACLK",
-          "axi_mem_intercon/ACLK"
+          "axi_mem_intercon/ACLK",
+          "MAC_Dense_Layer_0/aclk"
         ]
       },
       "processing_system7_0_FCLK_RESET0_N": {
@@ -1158,10 +1158,10 @@
           "rst_ps7_0_100M/peripheral_aresetn",
           "axi_dma_0/axi_resetn",
           "axi_smc/aresetn",
-          "dense_mac_axi_0/aresetn",
           "axi_mem_intercon/S00_ARESETN",
           "axi_mem_intercon/M00_ARESETN",
-          "axi_mem_intercon/ARESETN"
+          "axi_mem_intercon/ARESETN",
+          "MAC_Dense_Layer_0/aresetn"
         ]
       }
     },
@@ -1170,15 +1170,15 @@
         "address_spaces": {
           "Data": {
             "segments": {
+              "SEG_MAC_Dense_Layer_0_reg0": {
+                "address_block": "/MAC_Dense_Layer_0/s_axi/reg0",
+                "offset": "0x40000000",
+                "range": "4K"
+              },
               "SEG_axi_dma_0_Reg": {
                 "address_block": "/axi_dma_0/S_AXI_LITE/Reg",
                 "offset": "0x40400000",
                 "range": "64K"
-              },
-              "SEG_dense_mac_axi_0_reg0": {
-                "address_block": "/dense_mac_axi_0/s_axi/reg0",
-                "offset": "0x40000000",
-                "range": "4K"
               }
             }
           }

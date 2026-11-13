@@ -41,4 +41,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log dense_mac_axi.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source dense_mac_axi.tcl
+EAStep vivado -log MAC_Dense_Layer.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source MAC_Dense_Layer.tcl

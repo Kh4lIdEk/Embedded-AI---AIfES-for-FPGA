@@ -1,28 +1,28 @@
 vhdl xil_defaultlib  \
 "../../../bd/design_1/ip/design_1_axi_dma_0_0/sim/design_1_axi_dma_0_0.vhd" \
+"../../../bd/design_1/ip/design_1_rst_ps7_0_100M_0/sim/design_1_rst_ps7_0_100M_0.vhd" \
 
 vhdl xbip_utils_v3_0_16  \
-"../../../../AIfES_Accel.gen/sources_1/bd/design_1/ip/design_1_dense_mac_axi_0_0/src/fp_acc/hdl/xbip_utils_v3_0_rfs.vhd" \
+"../../../../AIfES_Accel.gen/sources_1/bd/design_1/ip/design_1_MAC_Dense_Layer_0_0/src/fp_acc/hdl/xbip_utils_v3_0_rfs.vhd" \
 
 vhdl axi_utils_v2_0_12  \
-"../../../../AIfES_Accel.gen/sources_1/bd/design_1/ip/design_1_dense_mac_axi_0_0/src/fp_acc/hdl/axi_utils_v2_0_vh_rfs.vhd" \
+"../../../../AIfES_Accel.gen/sources_1/bd/design_1/ip/design_1_MAC_Dense_Layer_0_0/src/fp_acc/hdl/axi_utils_v2_0_vh_rfs.vhd" \
 
 vhdl xbip_pipe_v3_0_12  \
-"../../../../AIfES_Accel.gen/sources_1/bd/design_1/ip/design_1_dense_mac_axi_0_0/src/fp_acc/hdl/xbip_pipe_v3_0_rfs.vhd" \
+"../../../../AIfES_Accel.gen/sources_1/bd/design_1/ip/design_1_MAC_Dense_Layer_0_0/src/fp_acc/hdl/xbip_pipe_v3_0_rfs.vhd" \
 
 vhdl xbip_dsp48_wrapper_v3_0_7  \
-"../../../../AIfES_Accel.gen/sources_1/bd/design_1/ip/design_1_dense_mac_axi_0_0/src/fp_acc/hdl/xbip_dsp48_wrapper_v3_0_vh_rfs.vhd" \
+"../../../../AIfES_Accel.gen/sources_1/bd/design_1/ip/design_1_MAC_Dense_Layer_0_0/src/fp_acc/hdl/xbip_dsp48_wrapper_v3_0_vh_rfs.vhd" \
 
 vhdl mult_gen_v12_0_25  \
-"../../../../AIfES_Accel.gen/sources_1/bd/design_1/ip/design_1_dense_mac_axi_0_0/src/fp_acc/hdl/mult_gen_v12_0_rfs.vhd" \
+"../../../../AIfES_Accel.gen/sources_1/bd/design_1/ip/design_1_MAC_Dense_Layer_0_0/src/fp_acc/hdl/mult_gen_v12_0_rfs.vhd" \
 
 vhdl floating_point_v7_1_22  \
-"../../../../AIfES_Accel.gen/sources_1/bd/design_1/ip/design_1_dense_mac_axi_0_0/src/fp_acc/hdl/floating_point_v7_1_vh_rfs.vhd" \
+"../../../../AIfES_Accel.gen/sources_1/bd/design_1/ip/design_1_MAC_Dense_Layer_0_0/src/fp_acc/hdl/floating_point_v7_1_vh_rfs.vhd" \
 
 vhdl xil_defaultlib  \
-"../../../bd/design_1/ip/design_1_dense_mac_axi_0_0/src/fp_acc/sim/fp_acc.vhd" \
-"../../../bd/design_1/ip/design_1_dense_mac_axi_0_0/src/fp_mul/sim/fp_mul.vhd" \
-"../../../bd/design_1/ip/design_1_rst_ps7_0_100M_0/sim/design_1_rst_ps7_0_100M_0.vhd" \
+"../../../bd/design_1/ip/design_1_MAC_Dense_Layer_0_0/src/fp_acc/sim/fp_acc.vhd" \
+"../../../bd/design_1/ip/design_1_MAC_Dense_Layer_0_0/src/fp_mul/sim/fp_mul.vhd" \
 
 # Do not sort compile order
 nosort

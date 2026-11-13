@@ -2,7 +2,7 @@
 //Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
-//Date        : Wed Nov 11 20:05:23 2026
+//Date        : Fri Nov 13 13:56:39 2026
 //Host        : omen running 64-bit major release  (build 9200)
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -183,6 +183,30 @@ module design_1
   wire processing_system7_0_M_AXI_GP0_WVALID;
   wire [0:0]rst_ps7_0_100M_peripheral_aresetn;
 
+  design_1_MAC_Dense_Layer_0_0 MAC_Dense_Layer_0
+       (.aclk(processing_system7_0_FCLK_CLK0),
+        .aresetn(rst_ps7_0_100M_peripheral_aresetn),
+        .s_axi_araddr(axi_smc_M01_AXI_ARADDR),
+        .s_axi_arready(axi_smc_M01_AXI_ARREADY),
+        .s_axi_arvalid(axi_smc_M01_AXI_ARVALID),
+        .s_axi_awaddr(axi_smc_M01_AXI_AWADDR),
+        .s_axi_awready(axi_smc_M01_AXI_AWREADY),
+        .s_axi_awvalid(axi_smc_M01_AXI_AWVALID),
+        .s_axi_bready(axi_smc_M01_AXI_BREADY),
+        .s_axi_bresp(axi_smc_M01_AXI_BRESP),
+        .s_axi_bvalid(axi_smc_M01_AXI_BVALID),
+        .s_axi_rdata(axi_smc_M01_AXI_RDATA),
+        .s_axi_rready(axi_smc_M01_AXI_RREADY),
+        .s_axi_rresp(axi_smc_M01_AXI_RRESP),
+        .s_axi_rvalid(axi_smc_M01_AXI_RVALID),
+        .s_axi_wdata(axi_smc_M01_AXI_WDATA),
+        .s_axi_wready(axi_smc_M01_AXI_WREADY),
+        .s_axi_wstrb(axi_smc_M01_AXI_WSTRB),
+        .s_axi_wvalid(axi_smc_M01_AXI_WVALID),
+        .s_axis_tdata(axi_dma_0_M_AXIS_MM2S_TDATA),
+        .s_axis_tlast(axi_dma_0_M_AXIS_MM2S_TLAST),
+        .s_axis_tready(axi_dma_0_M_AXIS_MM2S_TREADY),
+        .s_axis_tvalid(axi_dma_0_M_AXIS_MM2S_TVALID));
   design_1_axi_dma_0_0 axi_dma_0
        (.axi_resetn(rst_ps7_0_100M_peripheral_aresetn),
         .m_axi_mm2s_aclk(processing_system7_0_FCLK_CLK0),
@@ -329,30 +353,6 @@ module design_1
         .S00_AXI_wvalid(processing_system7_0_M_AXI_GP0_WVALID),
         .aclk(processing_system7_0_FCLK_CLK0),
         .aresetn(rst_ps7_0_100M_peripheral_aresetn));
-  design_1_dense_mac_axi_0_0 dense_mac_axi_0
-       (.aclk(processing_system7_0_FCLK_CLK0),
-        .aresetn(rst_ps7_0_100M_peripheral_aresetn),
-        .s_axi_araddr(axi_smc_M01_AXI_ARADDR),
-        .s_axi_arready(axi_smc_M01_AXI_ARREADY),
-        .s_axi_arvalid(axi_smc_M01_AXI_ARVALID),
-        .s_axi_awaddr(axi_smc_M01_AXI_AWADDR),
-        .s_axi_awready(axi_smc_M01_AXI_AWREADY),
-        .s_axi_awvalid(axi_smc_M01_AXI_AWVALID),
-        .s_axi_bready(axi_smc_M01_AXI_BREADY),
-        .s_axi_bresp(axi_smc_M01_AXI_BRESP),
-        .s_axi_bvalid(axi_smc_M01_AXI_BVALID),
-        .s_axi_rdata(axi_smc_M01_AXI_RDATA),
-        .s_axi_rready(axi_smc_M01_AXI_RREADY),
-        .s_axi_rresp(axi_smc_M01_AXI_RRESP),
-        .s_axi_rvalid(axi_smc_M01_AXI_RVALID),
-        .s_axi_wdata(axi_smc_M01_AXI_WDATA),
-        .s_axi_wready(axi_smc_M01_AXI_WREADY),
-        .s_axi_wstrb(axi_smc_M01_AXI_WSTRB),
-        .s_axi_wvalid(axi_smc_M01_AXI_WVALID),
-        .s_axis_tdata(axi_dma_0_M_AXIS_MM2S_TDATA),
-        .s_axis_tlast(axi_dma_0_M_AXIS_MM2S_TLAST),
-        .s_axis_tready(axi_dma_0_M_AXIS_MM2S_TREADY),
-        .s_axis_tvalid(axi_dma_0_M_AXIS_MM2S_TVALID));
   design_1_processing_system7_0_0 processing_system7_0
        (.DDR_Addr(DDR_addr),
         .DDR_BankAddr(DDR_ba),

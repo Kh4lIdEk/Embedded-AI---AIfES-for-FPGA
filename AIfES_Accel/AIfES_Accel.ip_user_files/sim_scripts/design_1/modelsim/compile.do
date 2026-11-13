@@ -10,15 +10,15 @@ vlib modelsim_lib/msim/xil_defaultlib
 vlib modelsim_lib/msim/axi_datamover_v5_1_38
 vlib modelsim_lib/msim/axi_sg_v4_1_21
 vlib modelsim_lib/msim/axi_dma_v7_1_38
+vlib modelsim_lib/msim/smartconnect_v1_0
+vlib modelsim_lib/msim/proc_sys_reset_v5_0_17
+vlib modelsim_lib/msim/axi_register_slice_v2_1_37
 vlib modelsim_lib/msim/xbip_utils_v3_0_16
 vlib modelsim_lib/msim/axi_utils_v2_0_12
 vlib modelsim_lib/msim/xbip_pipe_v3_0_12
 vlib modelsim_lib/msim/xbip_dsp48_wrapper_v3_0_7
 vlib modelsim_lib/msim/mult_gen_v12_0_25
 vlib modelsim_lib/msim/floating_point_v7_1_22
-vlib modelsim_lib/msim/smartconnect_v1_0
-vlib modelsim_lib/msim/proc_sys_reset_v5_0_17
-vlib modelsim_lib/msim/axi_register_slice_v2_1_37
 vlib modelsim_lib/msim/generic_baseblocks_v2_1_2
 vlib modelsim_lib/msim/fifo_generator_v13_2_15
 vlib modelsim_lib/msim/axi_data_fifo_v2_1_37
@@ -33,15 +33,15 @@ vmap xil_defaultlib modelsim_lib/msim/xil_defaultlib
 vmap axi_datamover_v5_1_38 modelsim_lib/msim/axi_datamover_v5_1_38
 vmap axi_sg_v4_1_21 modelsim_lib/msim/axi_sg_v4_1_21
 vmap axi_dma_v7_1_38 modelsim_lib/msim/axi_dma_v7_1_38
+vmap smartconnect_v1_0 modelsim_lib/msim/smartconnect_v1_0
+vmap proc_sys_reset_v5_0_17 modelsim_lib/msim/proc_sys_reset_v5_0_17
+vmap axi_register_slice_v2_1_37 modelsim_lib/msim/axi_register_slice_v2_1_37
 vmap xbip_utils_v3_0_16 modelsim_lib/msim/xbip_utils_v3_0_16
 vmap axi_utils_v2_0_12 modelsim_lib/msim/axi_utils_v2_0_12
 vmap xbip_pipe_v3_0_12 modelsim_lib/msim/xbip_pipe_v3_0_12
 vmap xbip_dsp48_wrapper_v3_0_7 modelsim_lib/msim/xbip_dsp48_wrapper_v3_0_7
 vmap mult_gen_v12_0_25 modelsim_lib/msim/mult_gen_v12_0_25
 vmap floating_point_v7_1_22 modelsim_lib/msim/floating_point_v7_1_22
-vmap smartconnect_v1_0 modelsim_lib/msim/smartconnect_v1_0
-vmap proc_sys_reset_v5_0_17 modelsim_lib/msim/proc_sys_reset_v5_0_17
-vmap axi_register_slice_v2_1_37 modelsim_lib/msim/axi_register_slice_v2_1_37
 vmap generic_baseblocks_v2_1_2 modelsim_lib/msim/generic_baseblocks_v2_1_2
 vmap fifo_generator_v13_2_15 modelsim_lib/msim/fifo_generator_v13_2_15
 vmap axi_data_fifo_v2_1_37 modelsim_lib/msim/axi_data_fifo_v2_1_37
@@ -77,7 +77,6 @@ vlog -work processing_system7_vip_v1_0_25  -incr -mfcu  -sv -L axi_vip_v1_1_23 -
 
 vlog -work xil_defaultlib  -incr -mfcu  "+incdir+../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/ec67/hdl" "+incdir+../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/df05/hdl" "+incdir+../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/f0b6/hdl/verilog" "+incdir+../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/00fe/hdl/verilog" "+incdir+../../../../../../../../../AMDDesignTools/2026.1/Vivado/data/rsb/busdef" "+incdir+C:/AMDDesignTools/2026.1/Vivado/data/xilinx_vip/include" \
 "../../../bd/design_1/ip/design_1_processing_system7_0_0/sim/design_1_processing_system7_0_0.v" \
-"../../../bd/design_1/sim/design_1.v" \
 
 vcom -work axi_datamover_v5_1_38  -93  \
 "../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/0f0c/hdl/axi_datamover_v5_1_rfs.vhd" \
@@ -91,31 +90,8 @@ vcom -work axi_dma_v7_1_38  -93  \
 vcom -work xil_defaultlib  -93  \
 "../../../bd/design_1/ip/design_1_axi_dma_0_0/sim/design_1_axi_dma_0_0.vhd" \
 
-vcom -work xbip_utils_v3_0_16  -93  \
-"../../../../AIfES_Accel.gen/sources_1/bd/design_1/ip/design_1_dense_mac_axi_0_0/src/fp_acc/hdl/xbip_utils_v3_0_rfs.vhd" \
-
-vcom -work axi_utils_v2_0_12  -93  \
-"../../../../AIfES_Accel.gen/sources_1/bd/design_1/ip/design_1_dense_mac_axi_0_0/src/fp_acc/hdl/axi_utils_v2_0_vh_rfs.vhd" \
-
-vcom -work xbip_pipe_v3_0_12  -93  \
-"../../../../AIfES_Accel.gen/sources_1/bd/design_1/ip/design_1_dense_mac_axi_0_0/src/fp_acc/hdl/xbip_pipe_v3_0_rfs.vhd" \
-
-vcom -work xbip_dsp48_wrapper_v3_0_7  -93  \
-"../../../../AIfES_Accel.gen/sources_1/bd/design_1/ip/design_1_dense_mac_axi_0_0/src/fp_acc/hdl/xbip_dsp48_wrapper_v3_0_vh_rfs.vhd" \
-
-vcom -work mult_gen_v12_0_25  -93  \
-"../../../../AIfES_Accel.gen/sources_1/bd/design_1/ip/design_1_dense_mac_axi_0_0/src/fp_acc/hdl/mult_gen_v12_0_rfs.vhd" \
-
-vcom -work floating_point_v7_1_22  -93  \
-"../../../../AIfES_Accel.gen/sources_1/bd/design_1/ip/design_1_dense_mac_axi_0_0/src/fp_acc/hdl/floating_point_v7_1_vh_rfs.vhd" \
-
-vcom -work xil_defaultlib  -93  \
-"../../../bd/design_1/ip/design_1_dense_mac_axi_0_0/src/fp_acc/sim/fp_acc.vhd" \
-"../../../bd/design_1/ip/design_1_dense_mac_axi_0_0/src/fp_mul/sim/fp_mul.vhd" \
-
 vlog -work xil_defaultlib  -incr -mfcu  "+incdir+../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/ec67/hdl" "+incdir+../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/df05/hdl" "+incdir+../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/f0b6/hdl/verilog" "+incdir+../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/00fe/hdl/verilog" "+incdir+../../../../../../../../../AMDDesignTools/2026.1/Vivado/data/rsb/busdef" "+incdir+C:/AMDDesignTools/2026.1/Vivado/data/xilinx_vip/include" \
-"../../../bd/design_1/ipshared/0410/src/dense_mac_axi.v" \
-"../../../bd/design_1/ip/design_1_dense_mac_axi_0_0/sim/design_1_dense_mac_axi_0_0.v" \
+"../../../bd/design_1/ip/design_1_axi_smc_0/bd_0/sim/bd_afc3.v" \
 
 vlog -work smartconnect_v1_0  -incr -mfcu  -sv -L axi_vip_v1_1_23 -L smartconnect_v1_0 -L processing_system7_vip_v1_0_25 -L xilinx_vip "+incdir+../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/ec67/hdl" "+incdir+../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/df05/hdl" "+incdir+../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/f0b6/hdl/verilog" "+incdir+../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/00fe/hdl/verilog" "+incdir+../../../../../../../../../AMDDesignTools/2026.1/Vivado/data/rsb/busdef" "+incdir+C:/AMDDesignTools/2026.1/Vivado/data/xilinx_vip/include" \
 "../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/f0b6/hdl/sc_util_v1_0_vl_rfs.sv" \
@@ -131,9 +107,6 @@ vlog -work smartconnect_v1_0  -incr -mfcu  -sv -L axi_vip_v1_1_23 -L smartconnec
 
 vlog -work xil_defaultlib  -incr -mfcu  -sv -L axi_vip_v1_1_23 -L smartconnect_v1_0 -L processing_system7_vip_v1_0_25 -L xilinx_vip "+incdir+../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/ec67/hdl" "+incdir+../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/df05/hdl" "+incdir+../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/f0b6/hdl/verilog" "+incdir+../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/00fe/hdl/verilog" "+incdir+../../../../../../../../../AMDDesignTools/2026.1/Vivado/data/rsb/busdef" "+incdir+C:/AMDDesignTools/2026.1/Vivado/data/xilinx_vip/include" \
 "../../../bd/design_1/ip/design_1_axi_smc_0/bd_0/ip/ip_0/sim/bd_afc3_sc_ul_0.sv" \
-
-vlog -work xil_defaultlib  -incr -mfcu  "+incdir+../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/ec67/hdl" "+incdir+../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/df05/hdl" "+incdir+../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/f0b6/hdl/verilog" "+incdir+../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/00fe/hdl/verilog" "+incdir+../../../../../../../../../AMDDesignTools/2026.1/Vivado/data/rsb/busdef" "+incdir+C:/AMDDesignTools/2026.1/Vivado/data/xilinx_vip/include" \
-"../../../bd/design_1/ip/design_1_axi_smc_0/bd_0/sim/bd_afc3.v" \
 
 vlog -work smartconnect_v1_0  -incr -mfcu  -sv -L axi_vip_v1_1_23 -L smartconnect_v1_0 -L processing_system7_vip_v1_0_25 -L xilinx_vip "+incdir+../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/ec67/hdl" "+incdir+../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/df05/hdl" "+incdir+../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/f0b6/hdl/verilog" "+incdir+../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/00fe/hdl/verilog" "+incdir+../../../../../../../../../AMDDesignTools/2026.1/Vivado/data/rsb/busdef" "+incdir+C:/AMDDesignTools/2026.1/Vivado/data/xilinx_vip/include" \
 "../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/3d9a/hdl/sc_mmu_v1_0_vl_rfs.sv" \
@@ -153,6 +126,35 @@ vlog -work xil_defaultlib  -incr -mfcu  -sv -L axi_vip_v1_1_23 -L smartconnect_v
 
 vcom -work xil_defaultlib  -93  \
 "../../../bd/design_1/ip/design_1_rst_ps7_0_100M_0/sim/design_1_rst_ps7_0_100M_0.vhd" \
+
+vlog -work xil_defaultlib  -incr -mfcu  "+incdir+../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/ec67/hdl" "+incdir+../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/df05/hdl" "+incdir+../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/f0b6/hdl/verilog" "+incdir+../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/00fe/hdl/verilog" "+incdir+../../../../../../../../../AMDDesignTools/2026.1/Vivado/data/rsb/busdef" "+incdir+C:/AMDDesignTools/2026.1/Vivado/data/xilinx_vip/include" \
+"../../../bd/design_1/sim/design_1.v" \
+
+vcom -work xbip_utils_v3_0_16  -93  \
+"../../../../AIfES_Accel.gen/sources_1/bd/design_1/ip/design_1_MAC_Dense_Layer_0_0/src/fp_acc/hdl/xbip_utils_v3_0_rfs.vhd" \
+
+vcom -work axi_utils_v2_0_12  -93  \
+"../../../../AIfES_Accel.gen/sources_1/bd/design_1/ip/design_1_MAC_Dense_Layer_0_0/src/fp_acc/hdl/axi_utils_v2_0_vh_rfs.vhd" \
+
+vcom -work xbip_pipe_v3_0_12  -93  \
+"../../../../AIfES_Accel.gen/sources_1/bd/design_1/ip/design_1_MAC_Dense_Layer_0_0/src/fp_acc/hdl/xbip_pipe_v3_0_rfs.vhd" \
+
+vcom -work xbip_dsp48_wrapper_v3_0_7  -93  \
+"../../../../AIfES_Accel.gen/sources_1/bd/design_1/ip/design_1_MAC_Dense_Layer_0_0/src/fp_acc/hdl/xbip_dsp48_wrapper_v3_0_vh_rfs.vhd" \
+
+vcom -work mult_gen_v12_0_25  -93  \
+"../../../../AIfES_Accel.gen/sources_1/bd/design_1/ip/design_1_MAC_Dense_Layer_0_0/src/fp_acc/hdl/mult_gen_v12_0_rfs.vhd" \
+
+vcom -work floating_point_v7_1_22  -93  \
+"../../../../AIfES_Accel.gen/sources_1/bd/design_1/ip/design_1_MAC_Dense_Layer_0_0/src/fp_acc/hdl/floating_point_v7_1_vh_rfs.vhd" \
+
+vcom -work xil_defaultlib  -93  \
+"../../../bd/design_1/ip/design_1_MAC_Dense_Layer_0_0/src/fp_acc/sim/fp_acc.vhd" \
+"../../../bd/design_1/ip/design_1_MAC_Dense_Layer_0_0/src/fp_mul/sim/fp_mul.vhd" \
+
+vlog -work xil_defaultlib  -incr -mfcu  "+incdir+../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/ec67/hdl" "+incdir+../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/df05/hdl" "+incdir+../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/f0b6/hdl/verilog" "+incdir+../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/00fe/hdl/verilog" "+incdir+../../../../../../../../../AMDDesignTools/2026.1/Vivado/data/rsb/busdef" "+incdir+C:/AMDDesignTools/2026.1/Vivado/data/xilinx_vip/include" \
+"../../../bd/design_1/ipshared/51e7/src/MAC_Dense_Layer.v" \
+"../../../bd/design_1/ip/design_1_MAC_Dense_Layer_0_0/sim/design_1_MAC_Dense_Layer_0_0.v" \
 
 vlog -work generic_baseblocks_v2_1_2  -incr -mfcu  "+incdir+../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/ec67/hdl" "+incdir+../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/df05/hdl" "+incdir+../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/f0b6/hdl/verilog" "+incdir+../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/00fe/hdl/verilog" "+incdir+../../../../../../../../../AMDDesignTools/2026.1/Vivado/data/rsb/busdef" "+incdir+C:/AMDDesignTools/2026.1/Vivado/data/xilinx_vip/include" \
 "../../../../AIfES_Accel.gen/sources_1/bd/design_1/ipshared/0c28/hdl/generic_baseblocks_v2_1_rfs.v" \

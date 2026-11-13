@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7z020clg484-1" LaunchTime="1794419480" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/dense_mac_axi.dcp">
-  <File Type="PA-TCL" Name="dense_mac_axi.tcl"/>
-  <File Type="REPORTS-TCL" Name="dense_mac_axi_reports.tcl"/>
-  <File Type="RDS-RDS" Name="dense_mac_axi.vds"/>
-  <File Type="RDS-PROPCONSTRS" Name="dense_mac_axi_drc_synth.rpt"/>
-  <File Type="RDS-UTIL" Name="dense_mac_axi_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="dense_mac_axi_utilization_synth.pb"/>
-  <File Type="RDS-DCP" Name="dense_mac_axi.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="dense_mac_axi_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="dense_mac_axi_timing_summary_synth.pb"/>
+<GenRun Id="synth_1" LaunchPart="xc7z020clg484-1" LaunchTime="1794573835" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/dense_mac_axi.dcp">
+  <File Type="PA-TCL" Name="MAC_Dense_Layer.tcl"/>
+  <File Type="REPORTS-TCL" Name="MAC_Dense_Layer_reports.tcl"/>
+  <File Type="RDS-RDS" Name="MAC_Dense_Layer.vds"/>
+  <File Type="RDS-PROPCONSTRS" Name="MAC_Dense_Layer_drc_synth.rpt"/>
+  <File Type="RDS-UTIL" Name="MAC_Dense_Layer_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="MAC_Dense_Layer_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="MAC_Dense_Layer.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="MAC_Dense_Layer_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="MAC_Dense_Layer_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
-    <File Path="$PSRCDIR/sources_1/imports/Downloads/dense_mac_axi.v">
+    <File Path="$PSRCDIR/sources_1/new/MAC_Dense_Layer.v">
       <FileInfo>
-        <Attr Name="ImportPath" Val="$PPRDIR/../../dense_mac_axi.v"/>
-        <Attr Name="ImportTime" Val="1794418291"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -25,7 +23,7 @@
     </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="dense_mac_axi"/>
+      <Option Name="TopModule" Val="MAC_Dense_Layer"/>
       <Option Name="TopAutoSet" Val="TRUE"/>
     </Config>
   </FileSet>
@@ -50,9 +48,7 @@
     </Config>
   </FileSet>
   <Strategy Version="1" Minor="2">
-    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2026">
-      <Desc>Vivado Synthesis Defaults</Desc>
-    </StratHandle>
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2026"/>
     <Step Id="synth_design"/>
   </Strategy>
   <BlockFileSet Type="BlockSrcs" Name="fp_acc"/>

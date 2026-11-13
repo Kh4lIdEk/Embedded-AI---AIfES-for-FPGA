@@ -3,11 +3,11 @@
 # SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
 # IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
 # SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
-# Start of session at: Wed Nov 11 18:51:24 2026
-# Process ID         : 3560
+# Start of session at: Fri Nov 13 13:43:58 2026
+# Process ID         : 31232
 # Current directory  : C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_dense_IP/AIfES_dense_IP.runs/synth_1
-# Command line       : vivado.exe -log dense_mac_axi.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source dense_mac_axi.tcl
-# Log file           : C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_dense_IP/AIfES_dense_IP.runs/synth_1/dense_mac_axi.vds
+# Command line       : vivado.exe -log MAC_Dense_Layer.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source MAC_Dense_Layer.tcl
+# Log file           : C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_dense_IP/AIfES_dense_IP.runs/synth_1/MAC_Dense_Layer.vds
 # Journal file       : C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_dense_IP/AIfES_dense_IP.runs/synth_1\vivado.jou
 # Running On         : omen
 # Platform           : Windows 11
@@ -17,8 +17,8 @@
 # CPU Physical cores : 16
 # CPU Logical cores  : 24
 # Host memory        : 31890 MB
-# Swap memory        : 12348 MB
-# Total Virtual      : 44238 MB
-# Available Virtual  : 13517 MB
+# Swap memory        : 12502 MB
+# Total Virtual      : 44393 MB
+# Available Virtual  : 13561 MB
 #-----------------------------------------------------------
-source dense_mac_axi.tcl -notrace
+source MAC_Dense_Layer.tcl -notrace
