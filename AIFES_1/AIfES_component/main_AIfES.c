@@ -1,25 +1,8 @@
-/******************************************************************************
- * main.c - AIfES MNIST (FNN f32) inference on the ZedBoard ARM (Zynq PS),
- *          bare-metal Vitis, polled XUartPs, driven by the PC Python script.
- *
- *   PC (Python) --UART--> ARM : sync, then 784 x float32 per image
- *   ARM --UART--> PC (Python) : prediction (format selectable, see REPLY_MODE)
- *
- * No RTOS, no malloc, no printf on the protocol UART.
- *
- * ============================ PROTOCOL (edit here) ===========================
- *   1. Python sends SYNC_BYTE (0xAB), possibly several times, until it reads
- *      SYNC_REPLY (0xCD).  The ARM answers 0xCD once, after flushing duplicates.
- *   2. Per image: Python sends 784 float32, little-endian ('<f4'), already
- *      normalised exactly as in training, row-major 28x28 = 3136 bytes,
- *      no header, no checksum.
- *   3. The ARM replies according to REPLY_MODE, then waits for the next image.
- *   If your script re-syncs before EVERY image, set SYNC_EACH_IMAGE to 1.
- * ============================================================================
- ******************************************************************************/
 #include <stdint.h>
 #include "xparameters.h"
 #include "xuartps.h"
+
+#include "hw_dense.h"
 
 /* AIfES model (your 784-128-64-10 files). This header DEFINES objects and
  * functions (model, layers, create_model, inference): include it in this one
@@ -256,6 +239,7 @@ int main(void)
     }
     APP_TIMER_INIT();
     g_status = 1;
+    hw_dense_selftest();
 
     /* Builds the AIfES model; weights stay in .rodata (DDR), workspace is static. */
     if (aifes_f32_fnn_create_model() != 0)

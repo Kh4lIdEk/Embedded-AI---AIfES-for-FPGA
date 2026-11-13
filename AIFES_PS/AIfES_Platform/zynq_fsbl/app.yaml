@@ -1,0 +1,4 @@
+domain_path: C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIFES_1/AIfES_Platform/zynq_fsbl/zynq_fsbl_bsp
+app_src_dir: C:\vitis\2026.1\Vitis\data\embeddedsw\lib\sw_apps\zynq_fsbl
+template: zynq_fsbl
+lang: c

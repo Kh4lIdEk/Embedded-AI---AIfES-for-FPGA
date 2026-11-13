@@ -8,5 +8,6 @@ addlib C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIFES_1/AIfES_Platform/ps7_co
 addlib C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIFES_1/AIfES_Platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/build_configs/gen_bsp/libsrc/dmaps/src/libdmaps.a
 addlib C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIFES_1/AIfES_Platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/build_configs/gen_bsp/libsrc/devcfg/src/libdevcfg.a
 addlib C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIFES_1/AIfES_Platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/build_configs/gen_bsp/libsrc/coresightps_dcc/src/libcoresightps_dcc.a
+addlib C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIFES_1/AIfES_Platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/build_configs/gen_bsp/libsrc/axidma/src/libaxidma.a
 save
 end

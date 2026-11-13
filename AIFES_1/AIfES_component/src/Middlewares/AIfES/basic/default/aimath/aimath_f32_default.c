@@ -20,6 +20,7 @@
  */
 
 #include "basic/default/aimath/aimath_f32_default.h"
+#include "../../../../hw_dense.h"
 #include <float.h>
 
 
@@ -35,6 +36,9 @@ void aimath_f32_default_linear(const aitensor_t *a, const aitensor_t *b, const a
 	float *b_data = (float *) b->data;
 	float *c_data = c != 0 ? (float *) c->data : 0;
 	float *result_data = (float *) result->data;
+	#ifdef USE_HW_DENSE
+       if (hw_dense_linear_f32(a, b, c, result) == 0) return;
+   	#endif
 
 #ifdef AIDEBUG_SHAPE_CHECKS
 	if(a->shape[1] != b->shape[0])

@@ -28,7 +28,7 @@
           "psDevice": "Auto Detect"
         },
         "resetAPU": false,
-        "bitstreamFile": "",
+        "bitstreamFile": "${workspaceFolder}\\AIfES_component\\_ide\\bitstream\\AIfES.bit",
         "zynqInitialization": {
           "isFsbl": false,
           "usingFSBL": {

@@ -3,8 +3,8 @@
   "type": "PLATFORM",
   "configuration": {
     "description": "",
-    "xsa": "C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIFES_1/AIfES_1_wrapper.xsa",
-    "xsaPathInPlatform": "AIfES_Platform/hw/AIfES_1_wrapper.xsa",
+    "xsa": "C:/Users/micro/Downloads/ASCON_co_18_09.xpr/AIfES_Accel/AIfES.xsa",
+    "xsaPathInPlatform": "AIfES_Platform/hw/AIfES.xsa",
     "emulationXsa": "",
     "emulationXsaPathInPlatform": "",
     "isCustomFSBL": false,

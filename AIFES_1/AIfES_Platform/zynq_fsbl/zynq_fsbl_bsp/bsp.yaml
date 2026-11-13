@@ -152,6 +152,11 @@ include_folder: include
 lib_folder: lib
 libsrc_folder: libsrc
 drv_info:
+  MAC_Dense_Layer_0: None
+  axi_dma_0:
+    driver: axidma
+    ip_name: axi_dma
+    path: C:\vitis\2026.1\Vitis\data\embeddedsw\XilinxProcessorIPLib\drivers\axidma_v9_21
   ps7_afi_0: None
   ps7_afi_1: None
   ps7_afi_2: None
