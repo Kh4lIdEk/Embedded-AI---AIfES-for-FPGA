@@ -35,7 +35,7 @@
 
 L'inférence de réseaux de neurones sur de petits processeurs embarqués est limitée par la puissance de calcul, la consommation et la mémoire. Ce projet étudie comment la logique programmable (PL) d'un SoC Zynq-7000 peut décharger l'ARM Cortex-A9 des opérations les plus coûteuses d'un perceptron multicouche (MLP), **sans abandonner un framework de ML embarqué standard**. Le réseau est un classifieur MNIST 784-128-64-10 (109 386 paramètres float32) exécuté par [AIfES](https://github.com/Fraunhofer-IMS/AIfES_for_Arduino) (Fraunhofer IMS). Une IP RTL sur mesure, `MAC_Dense_Layer`, calcule en virgule flottante simple précision les produits scalaires $y_j=\sum_k x_k\,W^{T}_{j,k}$ de chaque couche Dense. Elle est commandée par AXI4-Lite et alimentée par un DMA AXI via AXI4-Stream. AIfES garde la main sur le modèle, les activations et l'orchestration ; un petit driver bare-metal (`hw_dense.c`) est accroché à la routine de multiplication matricielle d'AIfES et bascule de façon transparente en logiciel quand la PL ne peut pas être utilisée.
 
-La conception a été validée par simulation RTL, par un auto-test matériel à réponse connue au démarrage, et par une évaluation de 100 images MNIST sur la ZedBoard où la PL a calculé les 300 appels de couches Dense (3 couches × 100 images) sans aucun repli. Deux configurations de référence (STM32 et ARM seul) servent de points de comparaison.
+La conception a été validée par simulation RTL, par un auto-test matériel à réponse connue au démarrage, et par une évaluation de 100 images MNIST sur la ZedBoard où la PL a calculé les 300 appels de couches Dense (3 couches × 100 images) sans aucun repli. Deux configurations de référence (STM32 et ARM seul) servent de points de comparaison. Sur les mêmes 100 images, l'inférence hybride dure en moyenne 1,19 ms contre 2,44 ms pour l'ARM seul, soit un gain d'un facteur 2,05 ; le transfert des poids par le DMA représente 92 % de ce temps (Section 7.5).
 
 **Mots-clés :** IA embarquée · Edge ML · AIfES · SoC FPGA · Zynq-7000 · ZedBoard · Co-conception matériel/logiciel · DMA AXI · AXI4-Stream · MAC en virgule flottante · Vivado · Vitis · MNIST
 
@@ -63,6 +63,7 @@ La conception a été validée par simulation RTL, par un auto-test matériel à
 | O4 | L'intégrer au PS du Zynq (block design Vivado) | Fait (`AIfES_Accel`) |
 | O5 | L'intégrer à AIfES sans modifier le modèle | Fait (`hw_dense.c` + 1 hook dans `aimath_f32_default.c`) |
 | O6 | Valider fonctionnellement sur la carte | Fait (auto-test + 100 images) |
+| O7 | Quantifier l'accélération par rapport à la référence ARM seul | Fait (Section 7.5) |
 
 
 **Contribution principale.** La contribution porte sur l'intégration matérielle/logicielle, pas sur le réseau de neurones lui-même : un accélérateur sur mesure basé sur AXI, son interface de registres, un chemin de données par DMA, un driver bare-metal qui gère le cache, et un hook non intrusif dans AIfES avec repli logiciel.
@@ -92,7 +93,7 @@ Le script PC envoie une image à la fois (784 × float32) ; le microcontrôleur 
 
 Le dossier `AIFES_PS` est un projet Vitis dont la plateforme (`AIFES_PS/AIfES_Platform/hw/AIfES_1_wrapper.xsa`) est construite à partir d'un **block design qui ne contient que le bloc `processing_system7`**, sans logique PL ni bitstream. L'application `main_AIfES.c` est l'application hybride privée de son driver : même protocole UART, même modèle et mêmes sources AIfES, mais `aimath_f32_default.c` ne porte aucun hook et `USE_HW_DENSE` n'est pas défini, de sorte que chaque couche Dense s'exécute dans la boucle C d'origine d'AIfES sur le Cortex-A9.
 
-**Rôle.** C'est la référence logicielle sur la ZedBoard : elle valide le modèle, le flux Vitis et la liaison UART sur la plateforme cible avant l'ajout d'un accélérateur, et c'est la configuration à laquelle la conception hybride devra être comparée.
+**Rôle.** C'est la référence logicielle sur la ZedBoard : elle valide le modèle, le flux Vitis et la liaison UART sur la plateforme cible avant l'ajout d'un accélérateur, et c'est la configuration à laquelle la conception hybride est comparée (Section 7.5). L'application expose pour cela des statistiques de temps (g_infer_first_us, g_infer_avg_us, g_infer_min_us, g_infer_max_us, g_infer_n), mesurées avec le timer global du Cortex-A9.
 
 ---
 
@@ -276,6 +277,8 @@ Taille du binaire affichée dans la console Vitis : `text` 578 739 o, `data` 2 8
 | Rôle du processeur | tout | tout | orchestration, préparation, biais, activations, E/S |
 | Rôle de la PL | — | — | produits scalaires (MAC fp32) |
 | Validation disponible | 97 % sur 100 images | 96 % sur 100 images | 96 % sur 100 images |
+| Temps d'inférence moyen (images 2 à 100) | non mesuré | 2 437 µs | 1 191 µs (**×2,05**) |
+| Première image | non mesuré | 2 713 µs | 3 918 µs (inclut la transposition des poids) |
 
 ### 7.2 Configuration hybride — validation sur la carte
 
@@ -294,7 +297,7 @@ Valeurs observées dans le débogueur (en hexadécimal sur la capture) :
 | `g_hw_last_err` | 0 | aucune erreur PL ou DMA enregistrée |
 | `g_images_done` | 0x64 = **100** | images traitées |
 | `g_hw_cycles_last` | 0x46F = 1 135 | cycles d'horloge PL (START → DONE) de la dernière couche Dense, soit 11,35 µs à 100 MHz |
-| `g_last_infer_us` | 0x4A0 = 1 184 | durée de la dernière inférence, en µs, mesurée sur l'ARM |
+| `g_last_infer_us` | 0x4A0 = 1 184 | durée de la dernière inférence, en µs, mesurée sur l'ARM (exécution de la Figure 6a ; les moyennes sur 100 images sont en Section 7.5) |
 
 Exactement 300 appels PL sans aucun repli montrent que **chaque couche Dense de chaque image a été calculée par l'accélérateur**. C'est la preuve que cette exécution a bien emprunté le chemin PL.
 
@@ -305,7 +308,7 @@ Exactement 300 appels PL sans aucun repli montrent que **chaque couche Dense de 
 
 Ce journal, capturé quelques secondes après la vue du débogueur ci-dessus (ce qui correspond à la même exécution de 100 images), montre les dix valeurs softmax renvoyées pour chaque image et une précision cumulée de **0,96 après 100 images**.
 
-**Vraisemblance du temps mesuré.** Le RTL consomme un mot de flux par cycle ; le seul transfert de flux demande donc au moins $(784+100\,352)+(128+8\,192)+(64+640)=110\,160$ mots, soit environ **1,10 ms** à 100 MHz. Les 1,184 ms mesurées sont cohérentes avec une conception limitée par le flux de données.
+**Vraisemblance du temps mesuré**. Le RTL consomme un mot de flux par cycle ; le seul transfert de flux demande donc au moins $(784+100\,352)+(128+8\,192)+(64+640)=110\,160$ mots, soit environ 1,10 ms à 100 MHz. La moyenne mesurée (1,19 ms, Section 7.5) n'est que 8 % au-dessus de cette borne : la conception est limitée par le flux de données, et les mesures par couche de la Section 7.5 le confirment.
 
 ### 7.3 Résultats d'implémentation matérielle
 
@@ -335,13 +338,79 @@ Résumé du timing : pire marge négative (WNS, setup) **3,273 ns**, pire marge 
 
 La console Tcl affiche `y[0] … y[3]` égaux à la référence (−3,9 ; 0,6 ; 5,1 ; 9,6) et `TEST PASSED`. La trace `araddr` montre le polling de l'état (`0x004`), la lecture de CYCLES (`0x010`) et les lectures de résultats à partir de `0x800`. Comme indiqué plus haut, cette simulation utilise des modèles comportementaux de substitution pour les cœurs en virgule flottante.
 
-### 7.5 Mesures
+### 7.5 Mesures de temps d'inférence
+
+Les deux configurations ont été mesurées sur la ZedBoard avec la même chaîne : le même modèle, la même plateforme matérielle (le bitstream hybride ; en ARM seul la PL reste simplement inutilisée) et le même script hôte, qui envoie toujours les 100 premières images de test. Le temps d'une inférence est chronométré sur l'ARM avec le timer global du Cortex-A9. L'application cumule les statistiques dans des variables lisibles au débogueur : `g_infer_first_us` (première image), `g_infer_avg_us`, `g_infer_min_us` et `g_infer_max_us` (images 2 à 100, soit `g_infer_n` = 99 inférences). La première image est comptée à part, car en hybride elle inclut la transposition des poids, faite une seule fois.
+
+Niveau d'optimisation du compilateur : **`-O2`, identique pour les deux builds**.
+<p align="center">
+  <img src="docs/images/arm_only_vitis_timing.png" alt="Statistiques de temps, ARM seul" width="50%"><br>
+  <em>Figure 9 — Session de débogage Vitis de l'application ARM seul après 100 images : statistiques de temps d'inférence.</em>
+</p>
+
+<p align="center">
+  <img src="docs/images/hybrid_vitis_timing.png" alt="Statistiques de temps, hybride" width="40%"><br>
+  <em>Figure 10 — Statistiques de temps d'inférence de l'application hybride après 100 images (300 appels PL, aucun repli).</em>
+</p>
+
+#### 7.5.1 Comparaison ARM seul / hybride
+
+| | A. ARM seul | B. Hybride (ARM + PL) |
+|---|---|---|
+| Première image (`g_infer_first_us`) | 2 713 µs (0xA99) | 3 918 µs (0xF4E) |
+| **Moyenne, images 2 à 100** (`g_infer_avg_us`) | **2 437 µs** (0x985) | **1 191 µs** (0x4A7) |
+| Minimum / maximum | 2 434 / 2 457 µs | 1 190 / 1 195 µs |
+| Dispersion ((max − min) / moyenne) | 0,9 % | 0,4 % |
+| Inférences comptées (`g_infer_n`) | 99 (`g_images_done` = 100) | 99 (`g_images_done` = 100) |
+| Appels PL / replis logiciels | — / 0 | 300 / 0 |
+| Précision sur les 100 images | 0,96 | 0,96 |
+
+En régime établi (images 2 à 100), l'hybride est **2,05 fois plus rapide** que l'ARM seul (2 437 ÷ 1 191), soit 1 246 µs économisées par inférence (−51 %). La précision est la même (0,96 sur ces 100 images), ce qui est attendu puisque le modèle est identique et que le calcul reste en simple précision.
+
+La première image fait l'inverse : 3 918 µs en hybride contre 2 713 µs en ARM seul. L'écart vient de la transposition des poids, qui se fait une seule fois par couche et coûte 2 720 µs au total (voir ci-dessous), ce qui correspond à l'écart de 2 727 µs entre la première image et la moyenne en hybride. Ce coût est rattrapé dès la deuxième image : après deux images, le temps cumulé est de 5 109 µs en hybride contre 5 150 µs en ARM seul.
+
+#### 7.5.2 Décomposition du temps par couche (hybride)
+
+Le build profilé de l'application (symbole `HW_PROFILE`) mesure, pour chaque couche Dense, la durée de chaque phase d'un appel. Les valeurs ci-dessous sont des **moyennes par appel sur les 100 images**, relevées dans le débogueur (`g_hw_prof[0..2]`) et converties de nanosecondes en microsecondes.
+
+<p align="center">
+  <img src="docs/images/hybrid_vitis_profile_layer1.png" alt="Profil de la couche 1" width="30%">
+  <img src="docs/images/hybrid_vitis_profile_layer2.png" alt="Profil de la couche 2" width="30%">
+  <img src="docs/images/hybrid_vitis_profile_layer3.png" alt="Profil de la couche 3" width="30%"><br>
+  <em>Figure 11 — Profil par couche : <code>g_hw_prof[0]</code> (784 → 128), <code>g_hw_prof[1]</code> (128 → 64) et <code>g_hw_prof[2]</code> (64 → 10).</em>
+</p>
+
+| Phase (champ) | Ce qui est mesuré | Couche 1 (784 → 128) | Couche 2 (128 → 64) | Couche 3 (64 → 10) |
+|---|---|---|---|---|
+| `ns_start` | écriture de K, M et START | 0,83 µs | 0,83 µs | 0,83 µs |
+| `ns_dma_x` | vidage du cache et transfert DMA de l'entrée | 19,15 µs | 4,60 µs | 3,10 µs |
+| `ns_dma_w` | transfert DMA des poids (le flux) | **1 004,96 µs** | **83,35 µs** | **7,91 µs** |
+| `ns_done` | attente de DONE après le dernier mot | 0,24 µs | 0,25 µs | 0,25 µs |
+| `ns_read` | lecture des M résultats par AXI4-Lite | 28,41 µs | 14,34 µs | 2,45 µs |
+| `ns_bias` | ajout du biais sur l'ARM | 1,38 µs | 0,70 µs | 0,13 µs |
+| `ns_other` | reste (vérifications, boucles) | 0,15 µs | 0,14 µs | 0,14 µs |
+| **`ns_total`** | total de la couche | **1 055,13 µs** | **104,20 µs** | **14,80 µs** |
+| Part de l'inférence moyenne (1 191 µs) | | 88,6 % | 8,7 % | 1,2 % |
+| `ns_transpose` | préparation des poids, une seule fois (première image) | 2 489,38 µs | 214,80 µs | 15,98 µs |
+
+Les trois couches totalisent 1 174,13 µs. Il reste **16,88 µs (1,4 %)** pour le reste de l'inférence : activations ReLU et Softmax, enchaînement des couches, copies.
+
+**Ce que montre le profil :**
+
+- **Le flux des poids domine.** Le transfert `ns_dma_w` totalise 1 096,2 µs sur les trois couches, soit **92 % de l'inférence** ; la seule couche 1 en représente 84 %. Le temps hybride est donc fixé par le déplacement des données et non par l'arithmétique.
+- **Le flux va bien à un mot par cycle.** Pour la couche 1, 100 352 mots à 10 ns donnent 1 003,52 µs, contre 1 004,96 µs mesurées (+0,14 %). Les couches 2 et 3 s'écartent de la valeur idéale (81,92 µs et 6,40 µs) d'un surcoût presque constant, de 1,4 à 1,5 µs par transfert. Le DMA et l'interconnexion ne ralentissent donc pas le chemin de données.
+- **Le surcoût hors flux est faible mais pas nul.** Il vaut 50,2 µs, 20,8 µs et 6,9 µs pour les trois couches, soit 77,9 µs au total (6,5 % de l'inférence). Il vient surtout de la lecture des résultats par AXI4-Lite (environ 0,22 µs par lecture) et du transfert de l'entrée. Pour la couche 3, ce surcoût fixe (6,9 µs) est presque aussi grand que le flux lui-même (7,9 µs).
+- **La fin du calcul est quasi instantanée.** L'attente de DONE après le dernier mot est d'environ 0,25 µs, du même ordre que la latence de l'accumulateur (22 cycles, soit 0,22 µs à 100 MHz).
+- **Le biais et le reste sont négligeables** (moins de 2 µs par couche).
+- **La transposition des poids coûte 2 720 µs, une seule fois.** Les poids ne changent jamais : ce coût n'est payé qu'à la première image.
+
+Avec 1 191 µs mesurées pour une borne de transfert de 1 101,6 µs, l'hybride n'a presque plus de marge avec cette architecture. Descendre nettement sous 1,1 ms demanderait de réduire le volume de poids transférés par inférence ou d'élargir le flux (plusieurs voies MAC), ce qui n'a pas été tenté.
 
 ---
 
 ## 10. Conclusion
 
-Le projet démontre une co-conception matérielle/logicielle fonctionnelle sur ZedBoard : AIfES garde la main sur le modèle et sur les couches non linéaires côté ARM, tandis qu'un accélérateur fp32 sur mesure, commandé par AXI, calcule les produits scalaires des couches Dense, piloté par un driver bare-metal qui gère le cache et dispose d'un repli logiciel. L'intégration couvre la conception RTL, le block design Vivado, une plateforme et une application Vitis, ainsi qu'un hook dans le framework. Elle a été validée en simulation, par un auto-test sur la carte et par une exécution de 100 images pendant laquelle la PL a traité les 300 appels de couches Dense. Les configurations STM32 et ARM seul servent de références.
+Le projet démontre une co-conception matérielle/logicielle fonctionnelle sur ZedBoard : AIfES garde la main sur le modèle et sur les couches non linéaires côté ARM, tandis qu'un accélérateur fp32 sur mesure, commandé par AXI, calcule les produits scalaires des couches Dense, piloté par un driver bare-metal qui gère le cache et dispose d'un repli logiciel. L'intégration couvre la conception RTL, le block design Vivado, une plateforme et une application Vitis, ainsi qu'un hook dans le framework. Elle a été validée en simulation, par un auto-test sur la carte et par une exécution de 100 images pendant laquelle la PL a traité les 300 appels de couches Dense. Les configurations STM32 et ARM seul servent de références. Sur les mêmes 100 images, l'inférence hybride dure en moyenne 1,19 ms contre 2,44 ms pour l'ARM seul (facteur 2,05, même précision de 0,96) ; le transfert des poids représente 92 % du temps hybride, ce qui indique que la conception est limitée par la bande passante du flux et non par l'arithmétique
 
 ---
 
